@@ -1,4 +1,4 @@
-class PrefectureCode < ApplicationRecord
+class PrefectureCode < ActiveHash::Base
   self.data = [
     { id: 1, name: '--' },
     { id: 2, name: '経済' },

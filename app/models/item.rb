@@ -13,7 +13,8 @@ class Item < ApplicationRecord
   validates :postage_payer_id, numericality: { other_than: 1 }
   validates :prefecture_code_id, numericality: { other_than: 1 }
   validates :preparation_day_id, numericality: { other_than: 1 }
-  validates :price, presence: true
+  validates :price, presence: true, length: { maximum: 7,minimum: 2 }, numericality: {
+     greater_than_or_equal_to: 9999999, less_than_or_equal_to: 30	}, format: { with: /\A[0-9]+\z/, message: 'aiai' }
   # validates :, presence: true
   # validates :, presence: true
   validates :image, presence: true
