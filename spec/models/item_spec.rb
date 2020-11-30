@@ -70,19 +70,19 @@ RSpec.describe Item, type: :model do
       it '価格の範囲が¥300未満では保存できない' do
         @item.price = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid. Please enter between 300 and 9,999,999 half-width numbers.")
+        expect(@item.errors.full_messages).to include('Price is invalid. Please enter between 300 and 9,999,999 half-width numbers.')
       end
 
       it '価格の範囲が¥9,999,999より大きいと保存できない' do
         @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid. Please enter between 300 and 9,999,999 half-width numbers.")
+        expect(@item.errors.full_messages).to include('Price is invalid. Please enter between 300 and 9,999,999 half-width numbers.')
       end
 
       it '価格は半角英数でないと保存できない' do
         @item.price = '３０００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid. Please enter between 300 and 9,999,999 half-width numbers.")
+        expect(@item.errors.full_messages).to include('Price is invalid. Please enter between 300 and 9,999,999 half-width numbers.')
       end
 
       it 'userが紐付いていないと登録できない' do

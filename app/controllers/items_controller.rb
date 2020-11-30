@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
-
-  before_action :authenticate_user!,only: :new
+  before_action :authenticate_user!, only: :new
 
   def index
     # @item = Item.all.order('created_at DESC')
@@ -26,5 +25,4 @@ class ItemsController < ApplicationController
           .permit(:name, :introduction, :category_id, :item_condition_id, :postage_payer_id, :prefecture_code_id, :preparation_day_id, :price, :image)
           .merge(user_id: current_user.id)
   end
-
 end
