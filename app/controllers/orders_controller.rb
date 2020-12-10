@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_item, only: [:index, :create, :sold_out]
+  before_action :set_item, only: [:index, :create]
 
   def index
     @order_destination = OrderDestination.new
