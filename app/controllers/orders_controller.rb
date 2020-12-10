@@ -4,9 +4,7 @@ class OrdersController < ApplicationController
 
   def index
     @order_destination = OrderDestination.new
-    if current_user.id == @item.user_id || @item.order != nil
-      redirect_to root_path 
-    end
+    redirect_to root_path if current_user.id == @item.user_id || !@item.order.nil?
   end
 
   def create
@@ -28,8 +26,10 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order_destination).permit(
-      :post_code, :prefecture_code_id, :city, :house_number, :building_name, :phone_number, :item_id).merge(
-        token: params[:token], user_id: current_user.id, item_id: params[:item_id])
+      :post_code, :prefecture_code_id, :city, :house_number, :building_name, :phone_number, :item_id
+    ).merge(
+      token: params[:token], user_id: current_user.id, item_id: params[:item_id]
+    )
   end
 
   def pay_item
@@ -41,5 +41,4 @@ class OrdersController < ApplicationController
       currency: 'jpy'
     )
   end
-
 end

@@ -11,7 +11,7 @@ RSpec.describe OrderDestination, type: :model do
     it '郵便番号が空だと登録できない' do
       @order_destination.post_code = ''
       @order_destination.valid?
-      expect(@order_destination.errors.full_messages).to include("Post code can't be blank", "Post code Input correctly")
+      expect(@order_destination.errors.full_messages).to include("Post code can't be blank", 'Post code Input correctly')
     end
     it 'post_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
       @order_destination.post_code = '1234567'
@@ -40,17 +40,17 @@ RSpec.describe OrderDestination, type: :model do
     it 'phone_numberが空だと登録できない' do
       @order_destination.phone_number = ''
       @order_destination.valid?
-      expect(@order_destination.errors.full_messages).to include("Phone number can't be blank", "Phone number Input only number")
+      expect(@order_destination.errors.full_messages).to include("Phone number can't be blank", 'Phone number Input only number')
     end
     it 'phone_numberが11桁以上だと登録できない' do
       @order_destination.phone_number = '123456789012'
       @order_destination.valid?
-      expect(@order_destination.errors.full_messages).to include("Phone number Input only number")
+      expect(@order_destination.errors.full_messages).to include('Phone number Input only number')
     end
     it 'phone_numberに-が含まれていると登録できない' do
       @order_destination.phone_number = '123-3456-7890'
       @order_destination.valid?
-      expect(@order_destination.errors.full_messages).to include("Phone number Input only number")
+      expect(@order_destination.errors.full_messages).to include('Phone number Input only number')
     end
     it 'tokenが空だと登録できない' do
       @order_destination.token = ''
